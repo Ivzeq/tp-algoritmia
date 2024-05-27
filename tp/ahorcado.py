@@ -35,10 +35,12 @@ palabraEvaluadaLista = []
 
 ### CODIGO DE EJECUCION
 
+letraEvaluada = input('Ingrese una letra:')
+
 palabraEvaluada = sorteo_palabra(vec)
 print (palabraEvaluada)
 
 palabraEvaluadaLista = convertirPalabraLista(palabraEvaluada)
 print(palabraEvaluadaLista)
 
-print(verificaLetra('a',palabraEvaluadaLista))
+print(verificaLetra(letraEvaluada,palabraEvaluadaLista))
