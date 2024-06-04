@@ -25,7 +25,6 @@ def buscar_letra(letter, wordList):                                             
 
     return pos_letra_palabra
 
-<<<<<<< HEAD
 def jugar_ahorcado():
     state = 'playing'
     palabra_a_evaluar = sorteo_palabra(['agua'])
@@ -55,8 +54,7 @@ def jugar_ahorcado():
          #   print ("Esa letra no se encuentra. Has perdido una vida. /n Tu total de vidas es de: ", vidas_total)
     #print  ("¡Has perdido!")
     
-=======
-def jugar_ahorcado(mensaje_ganador):
+def jugar_ahorcado2(mensaje_ganador):
     state = 'playing'                                                                       # Defino la variable con el estado del juego
     palabra_a_evaluar = sorteo_palabra(['agua'])                                            # Obtengo la palabra que voy a tener que adivinar
     lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)                   # Convierto la palabra a una lista de letras, para poder recorrerla
@@ -74,7 +72,6 @@ def jugar_ahorcado(mensaje_ganador):
         if(palabra_obtenida_jugador == lista_palabra_evaluada):                             # Verifico si mi palabra_obtenida_jugador es igual la que busco adivinar
             print(mensaje_ganador)                                                          # Imprimo en consola el mensaje de ganador
             state = 'winner'                                                                # Cambio el state a winner, para terminar de jugar
->>>>>>> ef812c38e18ba5fb8dd13c43783c23b3ccd7f814
 
 ### DECLARACION DE VARIABLES
 
