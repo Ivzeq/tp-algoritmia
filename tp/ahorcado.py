@@ -25,7 +25,7 @@ def buscar_letra(letter, wordList):
 
     return pos_letra_palabra
 
-def jugar_ahorcado():
+def jugar_ahorcado(mensaje_ganador):
     state = 'playing'
     palabra_a_evaluar = sorteo_palabra(['agua'])
     lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)
@@ -39,6 +39,10 @@ def jugar_ahorcado():
             for pos in range(1,len(lista_posiciones_letra)):
                 palabra_obtenida_jugador[lista_posiciones_letra[pos]] = letra_a_evaluar
                 print(palabra_obtenida_jugador)
+        
+        if(palabra_obtenida_jugador == lista_palabra_evaluada):
+            state = 'winner'
+            print(mensaje_ganador)
 
 ### DECLARACION DE VARIABLES
 
@@ -46,6 +50,8 @@ lista_palabras = ["agua", "sol", "casa", "gato", "perro", "libro", "silla", "mes
 palabra_a_evaluar = ''
 lista_palabra_evaluada = []
 letra_a_evaluar = ''
+mensaje_victoria = 'Ganaste la partida!'
+
 
 
 ### CODIGO DE EJECUCION
@@ -59,4 +65,5 @@ lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)
 print(lista_palabra_evaluada)
 
 print(buscar_letra(letra_a_evaluar,lista_palabra_evaluada))"""
-jugar_ahorcado()
+
+jugar_ahorcado(mensaje_victoria)
