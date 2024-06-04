@@ -7,24 +7,38 @@ import random
 ### FUNCIONES
 
 def sorteo_palabra (vec):
-    palabra = vec[random.randint(0,199)]
+    palabra = vec[random.randint(0,len(vec)-1)]
     return palabra
 
 def convertir_palabra_a_lista(palabra):
-    listaLetra = []
+    lista_letra = []
     for letra in palabra:
-        listaLetra.append(letra)
-    return listaLetra
+        lista_letra.append(letra)
+    return lista_letra
 
 def buscar_letra(letter, wordList):
-    posLetraPalabra = [False]
+    pos_letra_palabra = [False]
     for i in range (len(wordList)):
         if(letter==wordList[i]):
-            posLetraPalabra[0] = True
-            posLetraPalabra.append(i)
+            pos_letra_palabra[0] = True
+            pos_letra_palabra.append(i)
 
-    return posLetraPalabra
+    return pos_letra_palabra
 
+def jugar_ahorcado():
+    state = 'playing'
+    palabra_a_evaluar = sorteo_palabra(['agua'])
+    lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)
+    palabra_obtenida_jugador = ['_','_','_','_']
+    
+    while(state == 'playing'):
+        letra_a_evaluar = input('Ingrese una letra:')
+        lista_posiciones_letra = buscar_letra(letra_a_evaluar,lista_palabra_evaluada)
+
+        if(lista_posiciones_letra[0]==True):
+            for pos in range(1,len(lista_posiciones_letra)):
+                palabra_obtenida_jugador[lista_posiciones_letra[pos]] = letra_a_evaluar
+                print(palabra_obtenida_jugador)
 
 ### DECLARACION DE VARIABLES
 
@@ -35,7 +49,7 @@ letra_a_evaluar = ''
 
 
 ### CODIGO DE EJECUCION
-
+"""
 letra_a_evaluar = input('Ingrese una letra:')
 
 palabra_a_evaluar = sorteo_palabra(lista_palabras)
@@ -44,4 +58,5 @@ print (palabra_a_evaluar)
 lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)
 print(lista_palabra_evaluada)
 
-print(buscar_letra(letra_a_evaluar,lista_palabra_evaluada))
+print(buscar_letra(letra_a_evaluar,lista_palabra_evaluada))"""
+jugar_ahorcado()
