@@ -30,15 +30,30 @@ def jugar_ahorcado():
     palabra_a_evaluar = sorteo_palabra(['agua'])
     lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)
     palabra_obtenida_jugador = ['_','_','_','_']
-    
+    VIDAS_TOTAL = 4
     while(state == 'playing'):
         letra_a_evaluar = input('Ingrese una letra:')
         lista_posiciones_letra = buscar_letra(letra_a_evaluar,lista_palabra_evaluada)
-
+        
         if(lista_posiciones_letra[0]==True):
             for pos in range(1,len(lista_posiciones_letra)):
                 palabra_obtenida_jugador[lista_posiciones_letra[pos]] = letra_a_evaluar
                 print(palabra_obtenida_jugador)
+        elif lista_posiciones_letra[0]==False: #Si la letra no está dentro de la lista, vidas -1
+            VIDAS_TOTAL -=1
+            print ("Esa letra no se encuentra. Has perdido una vida. Tu total de vidas es de: ", VIDAS_TOTAL)
+        if VIDAS_TOTAL == 0:
+            state ='lose'
+            print  ("¡Has perdido!")
+            
+
+#    vidas_total = 4
+    #while vidas_total != 0:
+       # if lista pos letra[0] == False:
+        #    vidas_total -=1
+         #   print ("Esa letra no se encuentra. Has perdido una vida. /n Tu total de vidas es de: ", vidas_total)
+    #print  ("¡Has perdido!")
+    
 
 ### DECLARACION DE VARIABLES
 
