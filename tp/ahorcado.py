@@ -43,9 +43,6 @@ def jugar_ahorcado(mensaje_ganador):
         elif lista_posiciones_letra[0]==False:                                              #Si la letra no está dentro de la lista, vidas -1
             VIDAS_TOTAL -=1
             print ("Esa letra no se encuentra. Has perdido una vida. Tu total de vidas es de: ", VIDAS_TOTAL)
-        if VIDAS_TOTAL == 0:
-            state ='lose'
-            print  ("¡Has perdido!")
 
         if(palabra_obtenida_jugador == lista_palabra_evaluada):                             # Verifico si mi palabra_obtenida_jugador es igual la que busco adivinar
             print(mensaje_ganador)                                                          # Imprimo en consola el mensaje de ganador
