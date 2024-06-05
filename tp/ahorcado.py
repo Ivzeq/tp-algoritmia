@@ -59,7 +59,8 @@ def jugar_ahorcado2(mensaje_ganador):
     palabra_a_evaluar = sorteo_palabra(['agua'])                                            # Obtengo la palabra que voy a tener que adivinar
     lista_palabra_evaluada = convertir_palabra_a_lista(palabra_a_evaluar)                   # Convierto la palabra a una lista de letras, para poder recorrerla
     palabra_obtenida_jugador = ['_','_','_','_']                                            # Genero una lista con espacios vacios iguales a la cantidad de letras de la palabra a adivinar, es la que voy a usar para ir completando la palabra
-    
+    VIDAS_TOTAL = 4
+
     while(state == 'playing'):                                                              # Mientras el estado sea playing, sigo jugando
         letra_a_evaluar = input('Ingrese una letra:')                                       # Solicito al usuario la primer letra
         lista_posiciones_letra = buscar_letra(letra_a_evaluar,lista_palabra_evaluada)       # Utiliza buscar_letra para obtener True/False y las posiciones de las letras
@@ -68,7 +69,13 @@ def jugar_ahorcado2(mensaje_ganador):
             for pos in range(1,len(lista_posiciones_letra)):                                # Recorro la lista de posiciones que tienen la letra, a partir de la posicion 1 porque la 0 tiene el True/False
                 palabra_obtenida_jugador[lista_posiciones_letra[pos]] = letra_a_evaluar     # Completa la posicion que tiene la letra con la letra que se esta evaluando
                 print(palabra_obtenida_jugador)
-        
+        elif lista_posiciones_letra[0]==False:                                              #Si la letra no está dentro de la lista, vidas -1
+            VIDAS_TOTAL -=1
+            print ("Esa letra no se encuentra. Has perdido una vida. Tu total de vidas es de: ", VIDAS_TOTAL)
+        if VIDAS_TOTAL == 0:
+            state ='lose'
+            print  ("¡Has perdido!")
+
         if(palabra_obtenida_jugador == lista_palabra_evaluada):                             # Verifico si mi palabra_obtenida_jugador es igual la que busco adivinar
             print(mensaje_ganador)                                                          # Imprimo en consola el mensaje de ganador
             state = 'winner'                                                                # Cambio el state a winner, para terminar de jugar
